@@ -1,4 +1,5 @@
 using InformationProtocolSubSystem.Api.Infrastructure;
+using LiveChat.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
