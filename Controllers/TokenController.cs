@@ -55,6 +55,12 @@ public class AccountController : ControllerBase
 
         return Ok(false);
     }
+
+    [HttpPost("logout")]
+    public IActionResult Logout([FromBody] LoginModel model) {
+        this._chatService.removeUser(model.Username);
+        return Ok(model.Username + "Removed");
+    }
 }
 
 public class RegisterModel

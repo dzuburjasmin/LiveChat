@@ -1,10 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 using LiveChat.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.SignalR;
 
 namespace LiveChat.Hubs
 {
+    [Authorize]
     public class ChatHub : Hub
     {
         private readonly ChatService _chatService;
@@ -40,6 +42,7 @@ namespace LiveChat.Hubs
         }
         public async Task CreatePrivateChat(MessageDTO mess)
         {
+
             string chatName = GetPrivateChatName(mess.User, mess.Receiver);
             await Groups.AddToGroupAsync(Context.ConnectionId, chatName);
             var receiverId = _chatService.getConnIdByUser(mess.Receiver);
@@ -61,11 +64,14 @@ namespace LiveChat.Hubs
         {
             string chatName = GetPrivateChatName(sender, receiver);
             await Clients.Group(chatName).SendAsync("ClosePrivateChat");
-
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, chatName);
             var receiverId = _chatService.getConnIdByUser(receiver);
             await Groups.RemoveFromGroupAsync(receiverId, chatName);
 
+        }
+        public async Task LogoutUser()
+        {
+            await OnDisconnectedAsync(null);
         }
     }
 }

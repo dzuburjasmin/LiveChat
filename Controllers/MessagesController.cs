@@ -1,5 +1,6 @@
 using InformationProtocolSubSystem.Api.Infrastructure;
 using LiveChat.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace LiveChat.Controllers
                 ?? throw new ArgumentNullException(nameof(context));
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public IActionResult Get()
         {
             //var claims = TokenIdentityHelper.GetClaimValues(User, "messages");

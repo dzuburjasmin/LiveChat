@@ -44,11 +44,11 @@ public class ChatService
     {
         lock (Users)
         {
-            return Users.Where(x => x.Value == user).Select(x => x.Value).FirstOrDefault();
+            return Users.Where(x => x.Key == user).Select(x => x.Value).FirstOrDefault();
         }
     }
     public void removeUser(string user)
-    {
+     {
         lock (Users)
         {
             if (Users.ContainsKey(user))
