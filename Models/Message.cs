@@ -14,15 +14,20 @@ namespace LiveChat.Models
 
         [StringLength(20)]
         public string User { get; set; }
-        public string Receiver { get; set; }
+        [StringLength(20)]
+        public string? Receiver { get; set; }
+        public DateTime DateTime { get; set; }
+        [StringLength(20)]
+        public string ChatName { get; set; }
+
     }
     public class MessageDTO
     {
+        public Guid Id { get; set; }
         public string Text { get; set; }
         public string User { get; set; }
-        public string To { get; set; }
-        public string DateTime { get; set; }
         public string Receiver { get; set; }
+        public DateTime DateTime { get; set; }
 
     }
 }

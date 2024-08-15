@@ -25,7 +25,7 @@ public class AccountController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
-        var user = new User { UserName = model.Username, Name = model.Name , Password = model.Password };
+        var user = new User { UserName = model.Username, Name = model.Name};
         if (_context.Users.Where(u=>u.UserName == model.Username).FirstOrDefault()!=null)
         {
             return BadRequest("Username taken!");

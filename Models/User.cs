@@ -10,8 +10,8 @@ namespace LiveChat.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        [StringLength(20)]
-        public string Password { get; set; }
+        //[StringLength(20)]
+        //public string Password { get; set; }
         [StringLength(20)]
         public string Name { get; set; }
     }
