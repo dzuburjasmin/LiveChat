@@ -145,3 +145,4 @@ C:\Users\dzubu\source\repos\LiveChat\LiveChat\obj\Debug\net8.0\refint\LiveChat.d
 C:\Users\dzubu\source\repos\LiveChat\LiveChat\obj\Debug\net8.0\LiveChat.pdb
 C:\Users\dzubu\source\repos\LiveChat\LiveChat\obj\Debug\net8.0\LiveChat.genruntimeconfig.cache
 C:\Users\dzubu\source\repos\LiveChat\LiveChat\obj\Debug\net8.0\ref\LiveChat.dll
+C:\Users\dzubu\source\repos\LiveChat\LiveChat\bin\Debug\net8.0\LiveChat.staticwebassets.runtime.json

@@ -10,15 +10,13 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer("Server = (localdb)\\mssqllocaldb;Database=LIVECHAT;Trusted_Connection=True;MultipleActiveResultSets=true"));
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
 
 builder.Services.AddIdentity<User, IdentityRole>()
@@ -49,19 +47,24 @@ builder.Services.AddSingleton<ChatService>();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
-app.UseCors(c => c.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
-// Configure the HTTP request pipeline.
+app.UseCors(c => c.WithOrigins(builder.Configuration["Front:Origin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-//app.UseHttpsRedirection();
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseExceptionHandler("/Home/Error");
+//    app.UseHsts();
+//}
+//app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<ChatHub>("/hubs");
+
+app.MapFallbackToFile("index.html");
 
 app.Run();

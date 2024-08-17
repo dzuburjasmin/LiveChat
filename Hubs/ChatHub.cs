@@ -1,9 +1,6 @@
-﻿using System.Runtime.InteropServices;
-using LiveChat.Models;
+﻿using LiveChat.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
 
 namespace LiveChat.Hubs
 {
