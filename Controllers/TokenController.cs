@@ -43,6 +43,7 @@ public class AccountController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
+        var test = _context.Messages.FirstOrDefault();
         var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
 
         if (result.Succeeded)
