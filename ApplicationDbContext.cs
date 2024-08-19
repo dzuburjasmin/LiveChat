@@ -19,7 +19,7 @@ namespace LiveChat
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:chatter-app.database.windows.net, 1433;Initial Catalog=LIVECHAT; Persist Security Info=False; User ID=CloudSA1e03a94c;Password=Jasa123!}; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer("Server=tcp:chatter-app.database.windows.net,1433;Initial Catalog=LIVECHAT;Persist Security Info=False;User ID=CloudSA1e03a94c;Password=Jasa123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

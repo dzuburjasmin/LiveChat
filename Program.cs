@@ -66,7 +66,7 @@ var app = builder.Build();
 //    app.UseCors(c => c.WithOrigins(builder.Configuration["Front:AzureOrigin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
 //}
-app.UseCors(c => c.WithOrigins(builder.Configuration["Front:LocalOrigin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+app.UseCors(c => c.WithOrigins(builder.Configuration["Front:AzureOrigin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
 
 if (app.Environment.IsDevelopment())
 {
