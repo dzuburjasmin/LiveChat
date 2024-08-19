@@ -57,7 +57,17 @@ builder.Services.AddSingleton<ChatService>();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
-app.UseCors(c => c.WithOrigins(builder.Configuration["Front:Origin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseCors(c => c.WithOrigins(builder.Configuration["Front:LocalOrigin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+//}
+//else
+//{
+//    app.UseCors(c => c.WithOrigins(builder.Configuration["Front:AzureOrigin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+
+//}
+app.UseCors(c => c.WithOrigins(builder.Configuration["Front:AzureOrigin"]).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
